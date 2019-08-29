@@ -1,3 +1,15 @@
+<script>
+  import initI18n from "../initI18n";
+	export let lang = 'en';
+	function handleClick(event) {
+		if(lang=='en'){
+			lang='hi'
+		}else{
+			lang='en'
+		}
+	}
+  $: i18n = initI18n(lang);
+</script>
 <style>
 	h1 {
 		text-align: center;
@@ -22,4 +34,11 @@
 	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>Hello world!</h1>
+<h1>{i18n.t('hello')}!</h1>
+<h1>{i18n.t('msg')}!</h1>
+<br/>
+<center>
+	<button on:click={handleClick}>
+	{lang}
+	</button>
+	</center>
